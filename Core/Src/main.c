@@ -94,6 +94,13 @@ const osThreadAttr_t GUI_Task_attributes = {
   .stack_size = 8192 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for Input_Task */
+osThreadId_t Input_TaskHandle;
+const osThreadAttr_t Input_Task_attributes = {
+  .name = "Input_Task",
+  .stack_size = 1024 * 4,
+  .priority = (osPriority_t) osPriorityAboveNormal,
+};
 /* USER CODE BEGIN PV */
 uint8_t isRevD = 0; /* Applicable only for STM32F429I DISCOVERY REVD and above */
 /* USER CODE END PV */
@@ -112,6 +119,7 @@ static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
+void InputTask_Entry(void *argument);
 
 /* USER CODE BEGIN PFP */
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_SDRAM_CommandTypeDef *Command);
@@ -222,6 +230,9 @@ int main(void)
 
   /* creation of GUI_Task */
   GUI_TaskHandle = osThreadNew(TouchGFX_Task, NULL, &GUI_Task_attributes);
+
+  /* creation of Input_Task */
+  Input_TaskHandle = osThreadNew(InputTask_Entry, NULL, &Input_Task_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -1174,6 +1185,24 @@ void StartDefaultTask(void *argument)
     osDelay(100);
   }
   /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_InputTask_Entry */
+/**
+* @brief Function implementing the Input_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_InputTask_Entry */
+__weak void InputTask_Entry(void *argument)
+{
+  /* USER CODE BEGIN InputTask_Entry */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END InputTask_Entry */
 }
 
 /**
