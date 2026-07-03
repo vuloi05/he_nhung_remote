@@ -68,6 +68,9 @@ void Error_Handler(void);
 #define MCU_ACTIVE_GPIO_Port GPIOE
 #define SPI5_NCS_Pin GPIO_PIN_1
 #define SPI5_NCS_GPIO_Port GPIOC
+#define USER_BTN_Pin GPIO_PIN_0
+#define USER_BTN_GPIO_Port GPIOA
+#define USER_BTN_EXTI_IRQn EXTI0_IRQn
 #define JOY_L_SW_Pin GPIO_PIN_2
 #define JOY_L_SW_GPIO_Port GPIOB
 #define BTN_L2_Pin GPIO_PIN_2
