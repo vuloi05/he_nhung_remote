@@ -23,7 +23,8 @@ void Screen1View::tearDownScreen()
 
 void Screen1View::handleTickEvent()
 {
-    // Biến static để ghi nhớ trạng thái mode của khung hình trước
+    //
+	// Biến static để ghi nhớ trạng thái mode của khung hình trước
     static int last_mode = -1;
 
     // Chỉ xử lý cập nhật màn hình nếu có sự thay đổi mode (để tiết kiệm CPU)
