@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>STM32F429I_DISCO_REV_D01</name>
-	<comment/>
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -170,6 +170,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pccard.c</locationURI>
 		</link>
 		<link>
+			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_hal_pcd.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_hal_pcd_ex.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c</locationURI>
+		</link>
+		<link>
 			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_hal_pwr.c</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c</locationURI>
@@ -218,6 +228,11 @@
 			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_ll_fmc.c</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_ll_usb.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/FreeRTOS/cmsis_os2.c</name>
@@ -270,6 +285,26 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/Middlewares/Third_Party/FreeRTOS/Source/timers.c</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/USB_Device_Library/usbd_core.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/USB_Device_Library/usbd_ctlreq.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/USB_Device_Library/usbd_customhid.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/USB_Device_Library/usbd_ioreq.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c</locationURI>
+		</link>
+		<link>
 			<name>Drivers/BSP/Components/ili9341.c</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/Drivers/BSP/Components/ili9341/ili9341.c</locationURI>
@@ -298,6 +333,26 @@
 			<name>Application/User/TouchGFX/target/TouchGFXHAL.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/target/TouchGFXHAL.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USB_DEVICE/App/usb_device.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USB_DEVICE/App/usb_device.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USB_DEVICE/App/usbd_custom_hid_if.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USB_DEVICE/App/usbd_custom_hid_if.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USB_DEVICE/App/usbd_desc.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USB_DEVICE/App/usbd_desc.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USB_DEVICE/Target/usbd_conf.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USB_DEVICE/Target/usbd_conf.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/TouchGFX/target/generated/OSWrappers.cpp</name>
