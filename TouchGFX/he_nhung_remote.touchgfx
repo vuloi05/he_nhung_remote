@@ -3,7 +3,61 @@
     "Screens": [
       {
         "Name": "Screen1",
-        "Components": [],
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 240,
+            "Height": 320
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 24,
+            "Y": 25,
+            "Width": 193,
+            "Height": 20,
+            "TextId": "__SingleUse_BLVZ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textStandard",
+            "X": 26,
+            "Y": 107,
+            "Width": 189,
+            "Height": 20,
+            "TextId": "__SingleUse_4M4T",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 19,
+              "Green": 255,
+              "Blue": 3
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textMotion",
+            "X": 40,
+            "Y": 107,
+            "Width": 161,
+            "Height": 20,
+            "Visible": false,
+            "TextId": "__SingleUse_KRWB",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255
+            },
+            "AutoSize": true
+          }
+        ],
         "Interactions": []
       }
     ],
