@@ -68,6 +68,26 @@ void Error_Handler(void);
 #define MCU_ACTIVE_GPIO_Port GPIOE
 #define SPI5_NCS_Pin GPIO_PIN_1
 #define SPI5_NCS_GPIO_Port GPIOC
+#define JOY_L_SW_Pin GPIO_PIN_2
+#define JOY_L_SW_GPIO_Port GPIOB
+#define BTN_L2_Pin GPIO_PIN_2
+#define BTN_L2_GPIO_Port GPIOG
+#define BTN_R2_Pin GPIO_PIN_3
+#define BTN_R2_GPIO_Port GPIOG
+#define BTN_CROSS_Pin GPIO_PIN_8
+#define BTN_CROSS_GPIO_Port GPIOC
+#define BTN_CIRCLE_Pin GPIO_PIN_9
+#define BTN_CIRCLE_GPIO_Port GPIOA
+#define BTN_SQUARE_Pin GPIO_PIN_10
+#define BTN_SQUARE_GPIO_Port GPIOA
+#define BTN_R1_Pin GPIO_PIN_2
+#define BTN_R1_GPIO_Port GPIOD
+#define BTN_TRIANGLE_Pin GPIO_PIN_3
+#define BTN_TRIANGLE_GPIO_Port GPIOB
+#define JOY_R_SW_Pin GPIO_PIN_4
+#define JOY_R_SW_GPIO_Port GPIOB
+#define BTN_L1_Pin GPIO_PIN_7
+#define BTN_L1_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
