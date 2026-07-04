@@ -58,7 +58,19 @@
             "AutoSize": true
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerOnEveryTick",
+              "TickCount": 1
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "handleTickEvent"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [],
