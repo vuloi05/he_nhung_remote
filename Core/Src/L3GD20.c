@@ -205,8 +205,7 @@ void L3GD20_loop(void)
 				angleRate_x=(float) (Raw_x - (offset_x))*L3GD20_SENSITIVITY;
 				angleRate_y=(float) (Raw_y - (offset_y))*L3GD20_SENSITIVITY;
 				angleRate_z=(float) (Raw_z - (offset_z))*L3GD20_SENSITIVITY;
-				difftime=0.003f;
-
+    difftime=0.010f;
 				if((angleRate_x>Noise_X)||(angleRate_x<-Noise_X))
 				{
 					Angle_X+=((angleRate_x+LastAngleRate_X)*difftime)/(2.0f);
