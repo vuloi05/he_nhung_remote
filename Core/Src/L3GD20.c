@@ -140,9 +140,7 @@ void L3GD20_loop(void)
 		int32_t tempSum_Z = 0;
 		
 		//DCT
-		Angle_X = 0;
-		Angle_Y = 0;
-		Angle_Z = 0;
+	
 
 		switch(currentState)
 		{
