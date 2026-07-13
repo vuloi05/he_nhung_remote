@@ -22,7 +22,7 @@
 #include "cmsis_os.h"
 #include "app_touchgfx.h"
 #include "usb_device.h"
-
+#include "input_manager.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
@@ -1164,6 +1164,24 @@ void LCD_Delay(uint32_t Delay)
 {
   HAL_Delay(Delay);
 }
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    // Kích hoạt khi nhấn nút USER (Nối PA0)
+    if(GPIO_Pin == USER_BTN_Pin)
+    {
+        // Kỹ thuật Debounce (Chống dội phím) đơn giản
+        // Nếu nhấn quá sát nhau (dưới 200ms) thì bỏ qua
+        static uint32_t last_time = 0;
+        uint32_t current_time = HAL_GetTick();
+        
+        if (current_time - last_time > 200) {
+            InputManager_ToggleMode();
+            last_time = current_time;
+        }
+    }
+}
+
 
 /* USER CODE END 4 */
 
