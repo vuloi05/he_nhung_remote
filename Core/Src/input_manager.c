@@ -1,5 +1,6 @@
 #include "input_manager.h"
 #include "main.h"
+#include <math.h>
 #include "adc.h" // Để gọi hàm HAL_ADC_Start_DMA
 volatile GamepadMode_t g_current_mode = MODE_STANDARD;
 volatile GamepadReport_t g_gamepad_report = {0};
@@ -41,8 +42,8 @@ void InputManager_Init(void) {
 // Hệ số nhạy Gyro: Điều chỉnh số này để tay cầm nhạy hơn hoặc chậm hơn
 // Giá trị 2.0 nghĩa là nghiêng 45° = joystick đẩy hết cỡ (128*2 ≈ 255 - 128)
 // Tăng lên 3.0-4.0 nếu muốn nhạy hơn (nghiêng ít hơn cũng phản hồi mạnh)
-#define GYRO_SCALE 2.0f
-
+// Hệ số cho hàm bình phương (~45 độ sẽ đẩy joystick chạm đỉnh 255)
+#define GYRO_QUAD_CONST 0.0627f 
 void InputManager_Update(void) {
     // BẮT BUỘC: Luôn gọi vòng lặp Gyro để cập nhật sensor (dù đang ở Mode nào)
     L3GD20_loop();
@@ -57,22 +58,21 @@ void InputManager_Update(void) {
         g_gamepad_report.right_x = Process_ADC_Axis(adc1_buf[1]);
         g_gamepad_report.right_y = Process_ADC_Axis(adc3_buf[0]);
     } else {
-        // Mode 2: Dùng giá trị Gyro giả lập Joystick phải
-        float angle_z = get_Angle_Z(); // Yaw: nghiêng trái/phải
+        // Đổi hàm lấy trục Z sang trục Y để dùng thao tác lật nghiêng trái/phải để quẹo
+        // Đổi tên biến thành angle_y để đồng bộ logic
+        float angle_y = get_Angle_Y(); // Roll: lật nghiêng trái/phải
         float angle_x = get_Angle_X(); // Pitch: gập lên/xuống
         
-        // Map góc sang giá trị 0-255 với hệ số nhạy
-        int32_t mapped_x = 128 + (int32_t)(angle_z * GYRO_SCALE);
-        int32_t mapped_y = 128 + (int32_t)(angle_x * GYRO_SCALE);
+        // Ứng dụng hàm bình phương với fabsf() và roundf() chuẩn C-Standard
+        // Dùng fabsf để giữ nguyên dấu, dùng roundf để làm tròn đúng toán học giảm thiểu vùng chết
+        int32_t mapped_x = 128 + (int32_t)roundf(angle_y * fabsf(angle_y) * GYRO_QUAD_CONST);
+        int32_t mapped_y = 128 + (int32_t)roundf(angle_x * fabsf(angle_x) * GYRO_QUAD_CONST);
         
-        // Clamp để không tràn số 8-bit
+        // Clamp giới hạn 0-255 như cũ
         if (mapped_x < 0) mapped_x = 0;
         if (mapped_x > 255) mapped_x = 255;
         if (mapped_y < 0) mapped_y = 0;
         if (mapped_y > 255) mapped_y = 255;
-        
-        g_gamepad_report.right_x = (uint8_t)mapped_x;
-        g_gamepad_report.right_y = (uint8_t)mapped_y;
     }
 
     // --- 3. CẬP NHẬT NÚT BẤM ---
