@@ -62,7 +62,11 @@ void InputManager_Update(void) {
         // Đổi tên biến thành angle_y để đồng bộ logic
         float angle_y = get_Angle_Y(); // Roll: lật nghiêng trái/phải
         float angle_x = get_Angle_X(); // Pitch: gập lên/xuống
-        
+
+        // THÊM VÙNG CHẾT ĐẦU RA (DEADZONE) LÀM LƯỚI AN TOÀN CHỐNG RUNG TAY
+        if (angle_y > -2.0f && angle_y < 2.0f) angle_y = 0.0f;
+        if (angle_x > -2.0f && angle_x < 2.0f) angle_x = 0.0f;
+
         // Ứng dụng hàm bình phương với fabsf() và roundf() chuẩn C-Standard
         // Dùng fabsf để giữ nguyên dấu, dùng roundf để làm tròn đúng toán học giảm thiểu vùng chết
         int32_t mapped_x = 128 + (int32_t)roundf(angle_y * fabsf(angle_y) * GYRO_QUAD_CONST);
