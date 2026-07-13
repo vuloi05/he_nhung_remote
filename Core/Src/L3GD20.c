@@ -345,6 +345,15 @@ float get_Angle_Y(void)
 float get_Angle_Z(void)
 {
 	return Angle_Z;
+	void L3GD20_ResetAngles(void)
+{
+    Angle_X = 0;
+    Angle_Y = 0;
+    Angle_Z = 0;
+    LastAngleRate_X = 0;
+    LastAngleRate_Y = 0;
+    LastAngleRate_Z = 0;
+}
 }
 
 	
