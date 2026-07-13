@@ -1,7 +1,7 @@
 #include "input_manager.h"
 #include "main.h"
 #include "adc.h" // Để gọi hàm HAL_ADC_Start_DMA
-
+volatile GamepadMode_t g_current_mode = MODE_STANDARD;
 volatile GamepadReport_t g_gamepad_report = {0};
 
 // Buffer lưu 3 kênh ADC1 (PA5, PA7, PC3)
