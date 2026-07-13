@@ -38,6 +38,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 void StartDefaultTasks(void *argument);
+void InputTask_Entry(void *argument)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -70,7 +71,27 @@ void StartDefaultTask(void *argument)
   /* USER CODE END StartDefaultTask */
 }
 
+
   /* USER CODE END StartDefaultTask */
+__weak void InputTask_Entry(void *argument)
+{
+  /* USER CODE BEGIN InputTask_Entry */
+  
+  // Khởi động module đọc ADC và GPIO
+  InputManager_Init();
+
+  /* Infinite loop */
+  for(;;)
+  {
+    // Cập nhật giá trị nút bấm và ADC
+    InputManager_Update();
+    
+    // Đợi 5ms (200Hz - Tốc độ đọc tín hiệu vật lý)
+    osDelay(5);
+  }
+  /* USER CODE END InputTask_Entry */
+}
+
 /* USER CODE END FunctionPrototypes */
 
 
