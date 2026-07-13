@@ -37,7 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void StartDefaultTasks();
+void StartDefaultTasks(void *argument);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,36 +52,24 @@ void StartDefaultTasks();
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-    /* USER CODE BEGIN StartDefaultTask */
-void StartDefaultTasks(){
-
-  GamepadReport_t test_report = {0};
-
-  // Trạng thái cân bằng của joystick là 128
-  test_report.left_x = 128;
-  test_report.left_y = 128;
-  test_report.right_x = 128;
-  test_report.right_y = 128;
-
-  uint8_t counter = 0;
-
+void StartDefaultTask(void *argument)
+{
+  /* init code for USB_DEVICE */
+  MX_USB_DEVICE_Init();
+  /* USER CODE BEGIN StartDefaultTask */
+  
   for(;;)
   {
-    // Gửi báo cáo
-    Gamepad_SendReport(&test_report);
-
-    // Tạo giả lập gạt cần trái-phải cho PC test
-    test_report.left_x = 128 + (counter % 100);
-
-    // Giả lập nhấn nút tuần tự
-    if (counter % 20 == 0) {
-       test_report.buttons = (test_report.buttons == 0) ? 0x01 : (test_report.buttons << 1);
-    }
-
-    counter++;
-    osDelay(10); // Đợi 10ms (100Hz)
+    // Lấy dữ liệu global đã được InputTask xử lý và gửi đi
+    Gamepad_SendReport((GamepadReport_t*)&g_gamepad_report);
+    
+    // Đợi 1ms (1000Hz - Tần số lý tưởng cho USB Gamepad)
+    osDelay(1); 
   }
+  
+  /* USER CODE END StartDefaultTask */
 }
+
   /* USER CODE END StartDefaultTask */
 /* USER CODE END FunctionPrototypes */
 
