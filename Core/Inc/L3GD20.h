@@ -18,7 +18,7 @@
 	 float get_Angle_Y(void);
 	 float get_Angle_Z(void);
 
-
++  void L3GD20_ResetAngles(void);
 	 
 	 
 	 
