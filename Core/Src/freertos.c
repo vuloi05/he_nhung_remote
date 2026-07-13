@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "gamepad_hid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,7 +35,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+void StartDefaultTasks();
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -50,8 +50,39 @@
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-   
+    /* USER CODE BEGIN StartDefaultTask */
+void StartDefaultTasks(){
+
+  GamepadReport_t test_report = {0};
+
+  // Trạng thái cân bằng của joystick là 128
+  test_report.left_x = 128;
+  test_report.left_y = 128;
+  test_report.right_x = 128;
+  test_report.right_y = 128;
+
+  uint8_t counter = 0;
+
+  for(;;)
+  {
+    // Gửi báo cáo
+    Gamepad_SendReport(&test_report);
+
+    // Tạo giả lập gạt cần trái-phải cho PC test
+    test_report.left_x = 128 + (counter % 100);
+
+    // Giả lập nhấn nút tuần tự
+    if (counter % 20 == 0) {
+       test_report.buttons = (test_report.buttons == 0) ? 0x01 : (test_report.buttons << 1);
+    }
+
+    counter++;
+    osDelay(10); // Đợi 10ms (100Hz)
+  }
+}
+  /* USER CODE END StartDefaultTask */
 /* USER CODE END FunctionPrototypes */
+
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
