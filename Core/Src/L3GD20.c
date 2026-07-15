@@ -9,7 +9,7 @@
 #define AVERAGE_WINDOW_SIZE                  ((uint32_t) 10u)
 #define CALIBRATION_BUFFER_LENGTH            ((uint32_t) 2000u)
 #define L3GD20_SENSITIVITY    ((float)0.07)
-#define GYRO_LEAK_FACTOR 0.995f // 100Hz -> mất 50% tín hiệu sau 1.38s
+#define GYRO_LEAK_FACTOR 0.999f // 100Hz -> mất 50% tín hiệu sau 1.38s
 
 extern SPI_HandleTypeDef hspi5;
 
@@ -141,7 +141,9 @@ void L3GD20_loop(void)
 		int32_t tempSum_Z = 0;
 		
 		//DCT
-	
+		//Angle_X = 0;
+		//Angle_Y = 0;
+		//Angle_Z = 0;
 
 		switch(currentState)
 		{
@@ -206,8 +208,9 @@ void L3GD20_loop(void)
 				angleRate_x=(float) (Raw_x - (offset_x))*L3GD20_SENSITIVITY;
 				angleRate_y=(float) (Raw_y - (offset_y))*L3GD20_SENSITIVITY;
 				angleRate_z=(float) (Raw_z - (offset_z))*L3GD20_SENSITIVITY;
-    difftime=0.010f;
-				if((angleRate_x>Noise_X)||(angleRate_x<-Noise_X))
+				difftime=0.010f;
+
+                if((angleRate_x>Noise_X)||(angleRate_x<-Noise_X))
                 {
                     Angle_X+=((angleRate_x+LastAngleRate_X)*difftime)/(2.0f);
                     LastAngleRate_X=angleRate_x;
@@ -218,7 +221,7 @@ void L3GD20_loop(void)
                     Angle_X *= GYRO_LEAK_FACTOR;
                 }
 
-				if((angleRate_y>Noise_Y)||(angleRate_y<-Noise_Y))
+                if((angleRate_y>Noise_Y)||(angleRate_y<-Noise_Y))
                 {
                     Angle_Y+=((angleRate_y+LastAngleRate_Y)*difftime)/(2.0f);
                     LastAngleRate_Y=angleRate_y;
@@ -341,6 +344,16 @@ void L3GD20_loop(void)
 		}
 }
 
+void L3GD20_ResetAngles(void)
+{
+    Angle_X = 0;
+    Angle_Y = 0;
+    Angle_Z = 0;
+    LastAngleRate_X = 0;
+    LastAngleRate_Y = 0;
+    LastAngleRate_Z = 0;
+}
+
 float get_Angle_X(void)
 {
 	return Angle_X;
@@ -352,15 +365,6 @@ float get_Angle_Y(void)
 float get_Angle_Z(void)
 {
 	return Angle_Z;
-	void L3GD20_ResetAngles(void)
-{
-    Angle_X = 0;
-    Angle_Y = 0;
-    Angle_Z = 0;
-    LastAngleRate_X = 0;
-    LastAngleRate_Y = 0;
-    LastAngleRate_Z = 0;
-}
 }
 
 	
