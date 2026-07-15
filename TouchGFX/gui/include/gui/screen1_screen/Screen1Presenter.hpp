@@ -25,6 +25,9 @@ public:
      */
     virtual void deactivate();
 
+    virtual void modeChanged(int newMode);
+    virtual void usbStateChanged(int usbState);
+
     virtual ~Screen1Presenter() {}
 
 private:

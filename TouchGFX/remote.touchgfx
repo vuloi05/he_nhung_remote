@@ -8,73 +8,80 @@
             "Type": "Box",
             "Name": "box1",
             "Width": 240,
-            "Height": 320
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 24,
-            "Y": 25,
-            "Width": 193,
-            "Height": 20,
-            "TextId": "__SingleUse_BLVZ",
-            "TextRotation": "0",
+            "Height": 320,
+            "LockPosition": true,
             "Color": {
               "Red": 255,
               "Green": 255,
               "Blue": 255
-            },
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 31,
+            "Y": 11,
+            "Width": 179,
+            "Height": 24,
+            "TextId": "__SingleUse_VM7B",
+            "TextRotation": "0",
             "AutoSize": true
           },
           {
             "Type": "TextArea",
-            "Name": "textStandard",
-            "X": 26,
-            "Y": 107,
-            "Width": 189,
-            "Height": 20,
-            "TextId": "__SingleUse_4M4T",
+            "Name": "textAreaMode",
+            "Y": 145,
+            "Width": 240,
+            "Height": 60,
+            "TextId": "__SingleUse_EJZ2",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_AQXI"
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2",
+            "X": 49,
+            "Y": 212,
+            "Width": 142,
+            "Height": 12,
+            "TextId": "__SingleUse_4DHA",
             "TextRotation": "0",
             "Color": {
-              "Red": 19,
-              "Green": 255,
-              "Blue": 3
+              "Red": 119,
+              "Green": 119,
+              "Blue": 119
             },
             "AutoSize": true
           },
           {
-            "Type": "TextArea",
-            "Name": "textMotion",
-            "X": 40,
-            "Y": 107,
-            "Width": 161,
-            "Height": 20,
-            "Visible": false,
-            "TextId": "__SingleUse_KRWB",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255
-            },
-            "AutoSize": true
-          }
-        ],
-        "Interactions": [
+            "Type": "Image",
+            "Name": "imageModeIcon",
+            "X": 80,
+            "Y": 65,
+            "Width": 80,
+            "Height": 80,
+            "RelativeFilename": "icon_gamepad.png"
+          },
           {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerOnEveryTick",
-              "TickCount": 1
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "handleTickEvent"
+            "Type": "TextArea",
+            "Name": "textAreaUsbStatus",
+            "Y": 290,
+            "Width": 240,
+            "Height": 30,
+            "TextId": "__SingleUse_LC8G",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_8GXP"
             }
           }
-        ]
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],
-    "Name": "he_nhung_remote",
+    "Name": "remote",
     "Resolution": {
       "Width": 240,
       "Height": 320

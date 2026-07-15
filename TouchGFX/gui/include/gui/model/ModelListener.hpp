@@ -14,6 +14,11 @@ public:
     {
         model = m;
     }
+
+    //Hàm nhận sự kiện đổi mode (để trống)
+    virtual void modeChanged(int newMode) {}
+    virtual void usbStateChanged(int usbState) {}
+
 protected:
     Model* model;
 };

@@ -16,3 +16,14 @@ void Screen1Presenter::deactivate()
 {
 
 }
+
+void Screen1Presenter::modeChanged(int newMode)
+{
+    // Chuyển tiếp lệnh sang View để vẽ lên màn hình
+    view.updateModeUI(newMode);
+}
+
+void Screen1Presenter::usbStateChanged(int usbState)
+{
+    view.updateUsbUI(usbState);
+}

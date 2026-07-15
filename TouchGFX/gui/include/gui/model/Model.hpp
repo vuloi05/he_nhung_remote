@@ -16,6 +16,8 @@ public:
     void tick();
 protected:
     ModelListener* modelListener;
+    int previousMode; //  Lưu mode cũ
+    int previousUsbState;
 };
 
 #endif // MODEL_HPP
